@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Operations</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>Number Operations</h1>
+    
+    <!-- Add Form -->
+    <form id="addForm">
+        <input type="number" name="a" placeholder="First Number" required>
+        <input type="number" name="b" placeholder="Second Number" required>
+        <input type="submit" value="Add">
+    </form>
+    <div id="addResult"></div>
+
+    <!-- Subtract Form -->
+    <form id="subtractForm">
+        <input type="number" name="a" placeholder="Number to Subtract From" required>
+        <input type="number" name="b" placeholder="Number to Subtract" required>
+        <input type="submit" value="Subtract">
+    </form>
+    <div id="subtractResult"></div>
+
+    <!-- Sum of Digits Form -->
+    <form id="sumOfDigitsForm">
+        <input type="text" name="number" placeholder="Enter a number" required>
+        <input type="submit" value="Calculate Sum of Digits">
+    </form>
+    <div id="sumOfDigitsResult"></div>
+
+    <!-- Palindrome Check Form -->
+    <form id="palindromeForm">
+        <input type="text" name="number" placeholder="Enter a number" required>
+        <input type="submit" value="Check Palindrome">
+    </form>
+    <div id="palindromeResult"></div>
+
+    <script>
+        // Add operation
+        document.getElementById('addForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            axios.post('/add', formData)
+                .then(function (response) {
+                    document.getElementById('addResult').innerText = response.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        });
+
+        // Subtract operation
+        document.getElementById('subtractForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            axios.post('/subtract', formData)
+                .then(function (response) {
+                    document.getElementById('subtractResult').innerText = response.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        });
+
+        // Sum of Digits operation
+        document.getElementById('sumOfDigitsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            axios.post('/sumofdigits', formData)
+                .then(function (response) {
+                    document.getElementById('sumOfDigitsResult').innerText = response.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        });
+
+        // Palindrome Check
+        document.getElementById('palindromeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            axios.post('/ispal', formData)
+                .then(function (response) {
+                    document.getElementById('palindromeResult').innerText = response.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        });
+    </script>
+</body>
+</html>
