@@ -38,11 +38,12 @@
     <div id="palindromeResult"></div>
 
     <script>
+        MY_SERVER = 'http://127.0.0.1:5000'
         // Add operation
         document.getElementById('addForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(this);
-            axios.post('/add', formData)
+            axios.post(`${MY_SERVER}/add`, formData)
                 .then(function (response) {
                     document.getElementById('addResult').innerText = response.data;
                 })
@@ -55,7 +56,7 @@
         document.getElementById('subtractForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(this);
-            axios.post('/subtract', formData)
+            axios.post(`${MY_SERVER}/subtract`, formData)
                 .then(function (response) {
                     document.getElementById('subtractResult').innerText = response.data;
                 })
@@ -68,7 +69,7 @@
         document.getElementById('sumOfDigitsForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(this);
-            axios.post('/sumofdigits', formData)
+            axios.post(`${MY_SERVER}/sumofdigits`, formData)
                 .then(function (response) {
                     document.getElementById('sumOfDigitsResult').innerText = response.data;
                 })
@@ -81,7 +82,7 @@
         document.getElementById('palindromeForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(this);
-            axios.post('/ispal', formData)
+            axios.post(`${MY_SERVER}/ispal`, formData)
                 .then(function (response) {
                     document.getElementById('palindromeResult').innerText = response.data;
                 })

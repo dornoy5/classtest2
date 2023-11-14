@@ -1,9 +1,10 @@
 from flask import Flask, request, render_template
+from flask_cors import CORS
 from tools.numbers.simp import add_numbers, subtract_numbers
 from tools.numbers.comp import sumofdigits, ispal
 
 app = Flask(__name__)
-
+CORS(app)
 @app.route('/add', methods=['GET', 'POST'])
 def add():
     if request.method == 'POST':
